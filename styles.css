@@ -1,0 +1,175 @@
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/* Reapply the pointer cursor for anchor tags */
+a {
+	cursor: revert;
+}
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+	list-style: none;
+}
+/* For images to not be able to exceed their container */
+img {
+	max-width: 100%;
+}
+/* removes spacing between cells in tables */
+table {
+	border-collapse: collapse;
+}
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+	white-space: revert;
+}
+/* fix the feature of 'hidden' attribute.
+ display:revert; revert to element instead of attribute */
+:where([hidden]) {
+	display: none;
+}
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+	-webkit-user-drag: element;
+}
+
+/* ---------GENERAL STYLING--------- */
+html {
+	font-size: 62.5%;
+}
+
+:root {
+	--bright-orange: hsl(31, 77%, 52%);
+	--dark-cyan: hsl(184, 100%, 22%);
+	--vdark-cyan: hsl(179, 100%, 13%);
+	--transparent-white: hsla(0, 0%, 100%, 0.75);
+	--verylight-gray: hsl(0, 0%, 95%);
+}
+
+body {
+	font-size: 1.5rem;
+	background-color: var(--verylight-gray);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	color: var(--verylight-gray);
+	font-family: "Big Shoulders Display", cursive;
+	font-weight: 700;
+	font-size: 3.5rem;
+}
+
+p {
+	color: var(--transparent-white);
+	font-family: "Lexend Deca", sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.6;
+}
+
+.container {
+	margin: 10rem 0;
+}
+
+#product-card {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	max-width: 32.5rem;
+	height: 43rem;
+	align-items: center;
+	justify-items: start;
+	gap: 1rem;
+	padding: 4.5rem;
+}
+
+#product-card.sedans {
+	background-color: var(--bright-orange);
+	border-radius: 1rem 1rem 0 0;
+}
+#product-card.suvs {
+	background-color: var(--dark-cyan);
+}
+#product-card.luxury {
+	background-color: var(--vdark-cyan);
+	border-radius: 0 0 1rem 1rem;
+}
+#product-card.sedans > .btn {
+	color: var(--bright-orange);
+}
+#product-card.suvs > .btn {
+	color: var(--dark-cyan);
+}
+#product-card.luxury > .btn {
+	color: var(--vdark-cyan);
+}
+
+.btn {
+	width: 13rem;
+	border-radius: 2.5rem;
+	border: 0;
+	padding: 1.4rem 2.6rem;
+	background-color: var(--verylight-gray);
+	font-size: 1.2rem;
+	font-family: "Lexend Deca", sans-serif;
+	font-weight: 400;
+	margin: 2rem 0 0 0;
+}
+.btn:hover {
+	cursor: pointer;
+	background-color: transparent;
+	border: 2px solid var(--transparent-white);
+	padding: 1.2rem 2.4rem;
+}
+#product-card.sedans > .btn:hover {
+	color: var(--transparent-white);
+}
+#product-card.suvs > .btn:hover {
+	color: var(--transparent-white);
+}
+#product-card.luxury > .btn:hover {
+	color: var(--transparent-white);
+}
+
+@media only screen and (min-width: 1400px) {
+	.container {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		max-width: 100rem;
+		align-items: center;
+		/* justify-items: center; */
+	}
+	body {
+		height: 100vh;
+	}
+	h1 {
+		font-size: 4rem;
+	}
+	p {
+		line-height: 2;
+		margin-top: 0.5rem;
+		font-size: 1.6rem;
+	}
+	.btn {
+		margin-top: 8rem;
+		font-size: 1.5rem;
+		width: 15rem;
+		height: 5rem;
+	}
+	#product-card {
+		height: 55rem;
+		padding: 5rem;
+	}
+	#product-card.sedans {
+		border-radius: 1rem 0 0 1rem;
+	}
+	#product-card.luxury {
+		border-radius: 0 1rem 1rem 0;
+	}
+}
